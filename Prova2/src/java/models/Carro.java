@@ -9,6 +9,10 @@ public class Carro
   private int anoFabricacao;
   private String nomeUsuario;
 
+  public Carro (String nome,String nomeUsuario){
+    this.nome = nome;
+    this.nomeUsuario = nomeUsuario;
+  }
   public Carro(String nome, String cor, String modelo, int anoFabricacao, String nomeUsuario)
   {
     this.nome = nome;

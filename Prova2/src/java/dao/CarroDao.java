@@ -68,9 +68,10 @@ public class CarroDao
   {
     try
     {
-      String sql = "delete from Carro where nome = ?;";
+      String sql = "delete from Carro where nome = ? and nomeUsuario = ?;";
       PreparedStatement stm = connection.prepareStatement(sql);
       stm.setString(1, carro.getNome());
+      stm.setString(2, carro.getNomeUsuario());
       stm.execute();
       stm.close();
       return true;

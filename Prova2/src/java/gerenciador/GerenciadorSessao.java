@@ -23,7 +23,7 @@ public class GerenciadorSessao
   {
     this.usuario = novo_usuario;
     this.session.removeAttribute("usuarioSessao");
-    //this.session.setMaxInactiveInterval(15);
+    this.session.setMaxInactiveInterval(15);
     this.session.setAttribute("usuarioSessao", this.usuario);
   }
 

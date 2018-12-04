@@ -11,6 +11,8 @@ import gerenciador.GerenciadorSessao;
 import java.util.ArrayList;
 import models.Carro;
 import dao.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UsuarioServlet extends HttpServlet
 {
@@ -39,8 +41,7 @@ public class UsuarioServlet extends HttpServlet
       usuario = usuarioDao.buscarUsuario(usuario);
       if (usuario != null)
       {
-        //response.getWriter().append("Entrar");
-        gerenciadorSessao.adicionarUsuario(usuario);        
+        gerenciadorSessao.adicionarUsuario(usuario);
         ArrayList<Carro> carros = carroDao.listarCarro(usuario.getLogin());
         for (Carro carro : carros)
         {
@@ -52,7 +53,7 @@ public class UsuarioServlet extends HttpServlet
       }
       else
       {
-        response.getWriter().append("Usuário Inválido");        
+        response.getWriter().append("Usuário Inválido");
       }
       System.out.println("Cadastro");
     }
@@ -61,15 +62,39 @@ public class UsuarioServlet extends HttpServlet
       boolean sucesso = usuarioDao.criaUsuario(usuario);
       gerenciadorSessao.adicionarUsuario(usuario);
       ArrayList<Carro> carros = carroDao.listarCarro(usuario.getLogin());
-      response.getWriter().append("Cadastro");
+      if (carros != null)
+      {
+        for (Carro carro : carros)
+        {
+          String detalhe = carro.getNome() + " - " + carro.getModelo();
+          detalheCarro.add(detalhe);
+        }
+        request.setAttribute("listaCarro", detalheCarro);
+      }
+      request.getRequestDispatcher("Cadastro.jsp").forward(request, response);
       System.out.println("Alterar");
     }
     else if (request.getParameter("acao").equals("esqSenha"))
     {
       boolean sucesso = usuarioDao.alterarUsuario(usuario);
       gerenciadorSessao.adicionarUsuario(usuario);
-      ArrayList<Carro> carros = carroDao.listarCarro(usuario.getLogin());
-      response.getWriter().append("Esqueci senha");
+      ArrayList<Carro> carros = new ArrayList<Carro>();
+      try
+      {
+        carroDao = new CarroDao();
+        carros = carroDao.listarCarro(usuario.getLogin());
+      } catch (ClassNotFoundException ex)
+      {
+        Logger.getLogger(UsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
+      }
+
+      for (Carro carro : carros)
+      {
+        String detalhe = carro.getNome() + " - " + carro.getModelo();
+        detalheCarro.add(detalhe);
+      }
+      request.setAttribute("listaCarro", detalheCarro);
+      request.getRequestDispatcher("Cadastro.jsp").forward(request, response);
       System.out.println("Remover");
     }
   }
