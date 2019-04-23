@@ -14,19 +14,20 @@ import entity.Usuario;
  */
 public class ComandoListarLogins extends FrontComando
 {
-
-  @Override
-  public boolean equals(Object o)
-  {
-    GenericDao dao = new GenericDao();
-    List<Contato> login = dao.existLogin((String) o);
-    
-    return true; //To change body of generated methods, choose Tools | Templates.
-  }
-
+  
   @Override
   public void process() throws ServletException, IOException
   {
+    GenericDao dao = new GenericDao();
+    List<Usuario> login = dao.existLogin();
   }
 
+  public boolean existe(String login, String senha)
+  {
+    GenericDao dao = new GenericDao();
+    List<Usuario> logins = dao.usuario(login, senha);
+    //boolean usuario = logins.size() >= 1;
+    
+    return logins.size() >= 1;
+  }
 }

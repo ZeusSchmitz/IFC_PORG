@@ -3,20 +3,23 @@ package frontController;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import frontController.ComandoListarLogins;
 
 public class ComandoLogar extends FrontComando
 {
+
   ComandoListarLogins login = new ComandoListarLogins();
-  
+
   @Override
   public void process() throws ServletException, IOException
   {
-    if(login.equals(this.request.getParameter("login")))
+    String vlLogin = this.request.getParameter("login");
+    String vlSenha = this.request.getParameter("password");
+    
+    if (login.existe(vlLogin, vlSenha))
     {
-      System.out.println("Foi");
+      forward("lista");
     }
-    if (this.request.getParameter("login").equals(this.request.getParameter("password")))
+    else if (vlLogin.equalsIgnoreCase("admin") && (vlSenha.equalsIgnoreCase("admin123")))
     {
       forward("lista");
     }
@@ -24,7 +27,6 @@ public class ComandoLogar extends FrontComando
     {
       forward("index");
     }
-
   }
 
 }

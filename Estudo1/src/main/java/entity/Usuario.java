@@ -11,6 +11,10 @@ public class Usuario implements Serializable
   String login;
   String senha;
 
+  public Usuario()
+  {
+  }
+
   public String getSenha()
   {
     return senha;

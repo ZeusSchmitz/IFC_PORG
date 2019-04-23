@@ -8,6 +8,7 @@
 		<class>entity.Telefone</class>
 		<class>entity.Nome</class>
 		<class>entity.Url</class>
+		<class>entity.Usuario</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />

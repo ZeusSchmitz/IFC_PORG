@@ -7,8 +7,8 @@
   </head>
   <body>
     <form action="FrontControllerServlet">
-      <input type="text" name="login"> <br>
-      <input type="password" name="password"> <br>
+      Login: <input type="text" name="login"> <br>
+      Senha: <input type="password" name="password"> <br>
       <input hidden="true" name="comando" value="Logar">
       <input type="submit" value="Logar">
     </form>
