@@ -58,7 +58,7 @@ public class GenericDao
   public List<Contato> carregarTodosContato()
   {
     EntityManager entityManager = FabricaJPA.getEntityManagerFactory().createEntityManager();
-    List<Contato> contatos = null;
+    List<Contato> contatos;
     try
     {
       String jpql = "from Contato";
@@ -133,10 +133,19 @@ public class GenericDao
   public List<Usuario> usuario(String login, String senha)
   {
     EntityManager entityManager = FabricaJPA.getEntityManagerFactory().createEntityManager();
+    List<Usuario> usuario;
 
-    String jpql = "select login from Usuario where login = " + "'" + login + "'" + " and senha = " + "'" + senha + "'";
-    Query q = entityManager.createQuery(jpql);
+    try
+    {
+      String jpql = "select login from Usuario where login = " + "'" + login + "'" + " and senha = " + "'" + senha + "'";
+      Query q = entityManager.createQuery(jpql);
+      usuario = q.getResultList();
+    } catch (EntityExistsException | TransactionalException e)
+    {
+      usuario = null;
+      FabricaJPA.shutdown();
+    }
     
-    return q.getResultList();
+    return usuario;
   }
 }

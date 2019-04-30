@@ -23,12 +23,21 @@ public class Contato implements Serializable
 
   private Url site;
 
+  public Integer getId_usuario()
+  {
+    return id_usuario;
+  }
+
+  public void setId_usuario(Integer id_usuario)
+  {
+    this.id_usuario = id_usuario;
+  }
+
+  private Integer id_usuario;
+  
   @OneToMany(cascade = CascadeType.ALL)
   private List<Telefone> telefones = new ArrayList<>();
   
-  @OneToMany(cascade = CascadeType.ALL)
-  private List<Usuario> logins = new ArrayList<>();
-
   private boolean favoritos;
 
   public Contato()
@@ -36,22 +45,13 @@ public class Contato implements Serializable
     // TODO Auto-generated constructor stub
   }
 
-  public Contato(Nome nome, String notas, Url site, boolean favoritos)
+  public Contato(Nome nome, String notas, Url site, boolean favoritos, int id_usuario)
   {
     this.nome = nome;
     this.notas = notas;
     this.site = site;
     this.favoritos = favoritos;
-  }
-
-  public List<Usuario> getLogins()
-  {
-    return logins;
-  }
-
-  public void setLogins(List<Usuario> logins)
-  {
-    this.logins = logins;
+    this.id_usuario = id_usuario;
   }
 
   public Integer getId()

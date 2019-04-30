@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 
 import dao.GenericDao;
-import entity.Contato;
 import entity.Usuario;
 
 /**
@@ -26,7 +25,6 @@ public class ComandoListarLogins extends FrontComando
   {
     GenericDao dao = new GenericDao();
     List<Usuario> logins = dao.usuario(login, senha);
-    //boolean usuario = logins.size() >= 1;
     
     return logins.size() >= 1;
   }

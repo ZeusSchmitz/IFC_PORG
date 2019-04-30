@@ -47,9 +47,12 @@ public class ComandoCadastrar extends FrontComando
     {
       favoritos = false;
     }
-    Contato novo = new Contato(nome, notas, site, favoritos);
+    Usuario usuario = new Usuario();
+    Contato novo = new Contato(nome, notas, site, favoritos, 1);
+    ArrayList<Contato> cont = new ArrayList<Contato>();
+    cont.add(novo);
+    usuario.setContato(cont);
     novo.setTelefones(telefones);
-    novo.setLogins(logins);
     dao.salvar(novo);
     List<Contato> contatos = dao.carregarTodosContato();
     request.setAttribute("lista_contatos", contatos);

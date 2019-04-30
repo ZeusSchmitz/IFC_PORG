@@ -6,7 +6,7 @@ import javax.persistence.EntityManagerFactory;
 public class FabricaJPA
 {
 
-  private static final String PERSISTENCE_UNIT_NAME = "Estudo1";
+  private static final String PERSISTENCE_UNIT_NAME = "Prova1";
   private static EntityManagerFactory factory = null;
 
   public static EntityManagerFactory getEntityManagerFactory()
