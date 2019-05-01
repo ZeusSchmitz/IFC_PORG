@@ -11,20 +11,16 @@ import entity.Usuario;
 /**
  * Servlet implementation class ListarContatos
  */
-public class ComandoListarLogins extends FrontComando
+public class ComandoListarUsuarios extends FrontComando
 {
-  
+
   @Override
   public void process() throws ServletException, IOException
   {
-    System.out.println("Verifica usuário");
+    GenericDao dao = new GenericDao();
+    List<Usuario> usuarios = dao.carregarTodosUsuario();
+    request.setAttribute("lista_usuario", usuarios);
+    forward("lista");
   }
 
-  public boolean existe(String nome, String senha)
-  {
-    GenericDao dao = new GenericDao();
-    List<Usuario> logins = dao.usuario(nome, senha);
-    
-    return logins.size() >= 1;
-  }
 }

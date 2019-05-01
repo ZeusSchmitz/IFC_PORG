@@ -24,11 +24,22 @@ public class ComandoCadastrar extends FrontComando
     usuario.setSenha(Integer.parseInt(request.getParameter("senha")));
     Endereco endereco = new Endereco();
     endereco.setComp(request.getParameter("comp"));
-    endereco.setNum(Integer.parseInt(request.getParameter("comp")));
-    endereco.setComp(request.getParameter("rua"));
+    endereco.setNum(Integer.parseInt(request.getParameter("num")));
+    endereco.setNomeRua(request.getParameter("nmrua"));
+    List<Endereco> endList = new ArrayList<>();
+    endList.add(endereco);
+    Filme listFilme = new Filme();
+    listFilme.setNomeFilme(request.getParameter("nmfilme"));
+    listFilme.setAno(request.getParameter("ano"));
     List<Filme> filme = new ArrayList<>();
-    usuario.setEndereco((List<Endereco>) endereco);
+    filme.add(listFilme);
+    usuario.setEndereco(endList);
+    usuario.setFilme(filme);
     dao.salvar(usuario);
+    
+    List<Usuario> usuarios = dao.carregarTodosUsuario();
+    request.setAttribute("lista_usuario", usuarios);
+    forward("lista");
   }
 
 }

@@ -12,10 +12,14 @@ public class ComandoLogar extends FrontComando
   @Override
   public void process() throws ServletException, IOException
   {
-    String vlLogin = this.request.getParameter("login");
+    String vlNome = this.request.getParameter("nome");
     String vlSenha = this.request.getParameter("password");
     
-    if (vlLogin.equalsIgnoreCase("admin") && (vlSenha.equalsIgnoreCase("admin123")))
+    if (login.existe(vlNome, vlSenha))
+    {
+      forward("lista");
+    }
+    else if (vlNome.equalsIgnoreCase("admin") && (vlSenha.equalsIgnoreCase("admin123")))
     {
       forward("lista");
     }

@@ -34,13 +34,13 @@ public class GenericDao
     return resultado;
   }
 
-  public List<Usuario> carregarTodosContato()
+  public List<Usuario> carregarTodosUsuario()
   {
     EntityManager entityManager = FabricaJPA.getEntityManagerFactory().createEntityManager();
     List<Usuario> usuario;
     try
     {
-      String jpql = "from Contato";
+      String jpql = "from Usuario";
       TypedQuery<Usuario> q = entityManager.createQuery(jpql, Usuario.class);
       usuario = q.getResultList();
     } catch (EntityExistsException | TransactionalException e)
@@ -51,33 +51,15 @@ public class GenericDao
 
     return usuario;
   }
-
-  public List<Usuario> existLogin()
-  {
-    EntityManager entityManager = FabricaJPA.getEntityManagerFactory().createEntityManager();
-    List<Usuario> contatos = null;
-    try
-    {
-      String jpql = "from Usuario";
-      TypedQuery<Usuario> q = entityManager.createQuery(jpql, Usuario.class);
-      contatos = q.getResultList();
-    } catch (EntityExistsException | TransactionalException e)
-    {
-      contatos = null;
-      FabricaJPA.shutdown();
-    }
-
-    return contatos;
-  }
   
-  public List<Usuario> usuario(String login, String senha)
+  public List<Usuario> usuario(String nome, String senha)
   {
     EntityManager entityManager = FabricaJPA.getEntityManagerFactory().createEntityManager();
     List<Usuario> usuario;
 
     try
     {
-      String jpql = "select login from Usuario where login = " + "'" + login + "'" + " and senha = " + "'" + senha + "'";
+      String jpql = "select nome from Usuario where nome = " + "'" + nome + "'" + " and senha = " + "'" + senha + "'";
       Query q = entityManager.createQuery(jpql);
       usuario = q.getResultList();
     } catch (EntityExistsException | TransactionalException e)
