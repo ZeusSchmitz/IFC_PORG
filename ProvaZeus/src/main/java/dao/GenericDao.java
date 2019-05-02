@@ -1,5 +1,6 @@
 package dao;
 
+import entity.Filme;
 import java.util.List;
 
 import javax.persistence.EntityExistsException;
@@ -69,5 +70,24 @@ public class GenericDao
     }
     
     return usuario;
+  }
+
+  public List<Filme> listarFilmes(String nome, String senha)
+  {
+    EntityManager entityManager = FabricaJPA.getEntityManagerFactory().createEntityManager();
+    List<Filme> filme;
+
+    try
+    {
+      String jpql = "select f.id, f.nomeFilme, f.ano from usuario_filme a, filme f where a.Usuario_id = " + "'" + nome + "'" + " and f.id = " + " a.filme_id";
+      Query q = entityManager.createQuery(jpql);
+      filme = q.getResultList();
+    } catch (EntityExistsException | TransactionalException e)
+    {
+      filme = null;
+      FabricaJPA.shutdown();
+    }
+    
+    return filme;
   }
 }

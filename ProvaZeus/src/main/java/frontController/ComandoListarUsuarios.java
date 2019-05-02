@@ -20,7 +20,7 @@ public class ComandoListarUsuarios extends FrontComando
     GenericDao dao = new GenericDao();
     List<Usuario> usuarios = dao.carregarTodosUsuario();
     request.setAttribute("lista_usuario", usuarios);
-    forward("lista");
+    forward("listaFilm");
   }
 
 }

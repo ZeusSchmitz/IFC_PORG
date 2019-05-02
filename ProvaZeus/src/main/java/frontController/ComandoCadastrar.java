@@ -39,7 +39,7 @@ public class ComandoCadastrar extends FrontComando
     
     List<Usuario> usuarios = dao.carregarTodosUsuario();
     request.setAttribute("lista_usuario", usuarios);
-    forward("lista");
+    forward("listaFilm");
   }
 
 }
