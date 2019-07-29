@@ -1,0 +1,13 @@
+frontController\ComandoCadastrar.class
+frontController\ComandoListarLogins.class
+frontController\FrontComando.class
+entity\Endereco.class
+frontController\ComandoDesconhecido.class
+frontController\ComandoListarUsuarios.class
+fabricaConecxao\FabricaJPA.class
+dao\GenericDao.class
+entity\Usuario.class
+fabricaConecxao\TesteFabrica.class
+frontController\ComandoLogar.class
+entity\Filme.class
+frontController\FrontControllerServlet.class

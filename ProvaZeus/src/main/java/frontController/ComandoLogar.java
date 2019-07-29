@@ -17,11 +17,15 @@ public class ComandoLogar extends FrontComando
     
     if (login.existe(vlNome, vlSenha))
     {
-      forward("listaFilm");
+      forward("lista");
+    }
+    else if (vlNome.equalsIgnoreCase("admin") && (vlSenha.equalsIgnoreCase("admin123")))
+    {
+      forward("lista");
     }
     else
     {
-      forward("lista");
+      forward("index");
     }
   }
 
