@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+    <title>Cadastro Usuario</title>
+  </h:head>
+  <h:body>
+
+    <br> </br>
+    <h:form>
+      <p:panel id="panel" header="Adicionar/Editar usuario" style="width:70%; position:absolute; top:15%; left:15%;">
+
+        <h:panelGrid columns="4" cellpadding="5">
+          <p:outputLabel value="Nome" />
+          <p:inputText id="nome"
+                       value="#{cadastroUsuarioBean.cadastroUsuario.nome}" label="nome">
+          </p:inputText>
+
+          <p:outputLabel value="Sobrenome" />
+          <p:inputText id="sobrenome"
+                       value="#{cadastroUsuarioBean.cadastroUsuario.sobrenome}"
+                       label="sobreno">
+          </p:inputText>
+
+          <p:outputLabel value="Endereço" />
+          <p:inputText id="endereco"
+                       value="#{cadastroUsuarioBean.cadastroUsuario.endereco}"
+                       label="endereco">
+          </p:inputText>
+
+          <p:outputLabel value="Telefone" />
+          <p:inputText id="fone"
+                       value="#{cadastroUsuarioBean.cadastroUsuario.fone}" label="fone">
+          </p:inputText>
+
+          <p:outputLabel value="CPF" />
+          <p:inputText id="cpf"
+                       value="#{cadastroUsuarioBean.cadastroUsuario.cpf}" label="cpf">
+          </p:inputText>
+
+          <p:outputLabel value="Usuario" />
+          <p:inputText id="usuario"
+                       value="#{cadastroUsuarioBean.cadastroUsuario.usuario}"
+                       label="usuario">
+          </p:inputText>
+
+          <p:outputLabel value="Senha" />
+          <p:password id="senha"
+                      value="#{cadastroUsuarioBean.cadastroUsuario.senha}" />
+        </h:panelGrid>
+        <p:commandButton value="Salvar" update="panel"
+                         action="#{cadastroUsuarioBean.save}" />
+      </p:panel>
+    </h:form>
+  </h:body>
+</html>

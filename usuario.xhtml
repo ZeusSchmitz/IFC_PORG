@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <link rel="stylesheet" href="css/styles.css"></link>
+        <title>Gerencia Filme</title>
+    </h:head>
+    <h:body>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='index.xhtml'>Home</a></li>
+                <li><a href='cadastroFilme.xhtml'>Cadastrar Filmes</a></li>
+                <li><a href='filme.xhtml'>Consultar Filmes</a></li>
+                <li><a href="cadastroUsuario.xhtml">Cadastro Usuario</a></li>
+                <li class='active'><a href="usuario.xhtml">Usuario</a></li>
+            </ul>
+        </div>
+
+
+        <br />
+        <h:form style="width:70%; position:absolute; top:15%; left:15%;">
+
+            <p:dataTable id="tbl" var="usuario" value="#{cadastroUsuarioBean.cadastroUsuarioList}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} 
+                         {Exporters}"
+                         paginator="true" rows="5" style="margin-bottom:20px">
+
+                <p:column headerText="Codigo">
+                    <h:outputText value="#{usuario.id}" />
+                </p:column>
+                <p:column headerText="Nome">
+                    <h:outputText value="#{usuario.nome}" />
+                </p:column>
+                <p:column headerText="Sobrenome">
+                    <h:outputText value="#{usuario.sobrenome}" />
+                </p:column>
+                <p:column headerText="Rua">
+                    <h:outputText value="#{usuario.endereco.nomeRua}" />
+                </p:column>
+                <p:column headerText="Complemento">
+                    <h:outputText value="#{usuario.endereco.comp}" />
+                </p:column>
+                <p:column headerText="Número">
+                    <h:outputText value="#{usuario.endereco.num}" />
+                </p:column>
+                <p:column headerText="Telefone">
+                    <h:outputText value="#{usuario.fone}" />
+                </p:column>
+                <p:column headerText="CPF">
+                    <h:outputText value="#{usuario.cpf}" />
+                </p:column>
+                <p:column headerText="Senha"/>
+                <p:password id="senha"
+                            value="#{usuario.senha}" />
+                <p:column headerText="Editar" exportable="false">
+                    <p:commandButton action="#{cadastroUsuarioBean.edit(usuario)}" value="Editar" />
+                </p:column>
+                <p:column headerText="Deletar" exportable="false">
+                    <h:commandLink action="#{cadastroUsuarioBean.delete(usuario)}" value="Excluir" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

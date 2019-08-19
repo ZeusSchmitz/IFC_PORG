@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+    <title>Gerencia Atividade</title>
+  </h:head>
+  <h:body>
+
+
+    <h:form style="width:70%; position:absolute; top:15%; left:15%;">
+
+      <p:dataTable id="tbl" var="calendario" value="#{calendarioBean.calendarioList}"
+                   paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} 
+                   {Exporters}"
+                   paginator="true" rows="5" style="margin-bottom:20px">
+        <f:facet name="{Exporters}">
+          <h:commandLink>
+            <p:graphicImage value="images/excel.png" width="24" />
+            <p:dataExporter type="xls" target="tbl" fileName="calendario" />
+          </h:commandLink>
+          <h:commandLink>
+            <p:graphicImage value="images/pdf.png" width="24" />
+            <p:dataExporter type="pdf" target="tbl" fileName="calendario" />
+          </h:commandLink>
+          <h:commandLink>
+            <p:graphicImage value="images/xml.png" width="24" />
+            <p:dataExporter type="xml" target="tbl" fileName="calendario" />
+          </h:commandLink>
+        </f:facet>
+        <p:column headerText="Data Atividade">
+          <h:outputText value="#{calendario.data}" />
+        </p:column>
+
+        <p:column headerText="Descrição da Atividade">
+          <h:outputText value="#{calendario.descricaoAtividade}" />
+        </p:column>
+        <p:column headerText="Editar" exportable="false">
+
+          <p:commandButton action="#{calendarioBean.edit(calendario)}"
+                           value="Editar" />
+
+        </p:column>
+        <p:column headerText="Deletar" exportable="false">
+
+          <h:commandLink action="#{calendarioBean.delete(calendario)}"
+                         value="Excluir" />
+        </p:column>
+      </p:dataTable>
+    </h:form>
+  </h:body>
+</html>

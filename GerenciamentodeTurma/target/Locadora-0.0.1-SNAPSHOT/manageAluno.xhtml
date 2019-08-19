@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Gerencia Filmes</title>
+</h:head>
+<h:body>
+	
+
+	<h:form>
+		<p:panel id="panel" header="Adiciona Aluno"
+			style="width:70%; position:absolute; top:15%; left:15%;">
+
+			<h:panelGrid columns="3" cellpadding="5">
+				<p:outputLabel value="Nome do aluno" />
+				<p:inputText id="name" value="#{alunoBean.aluno.name}" label="name">
+				</p:inputText>
+				<br />
+
+				<p:outputLabel value="Curso" />
+				<p:inputText id="curso" value="#{alunoBean.aluno.curso}"
+					label="curso">
+				</p:inputText>
+				<br />
+				<p:outputLabel value="periodo" />
+				<p:inputText id="periodo" value="#{alunoBean.aluno.periodo}"
+					label="periodo">
+				</p:inputText>
+				<br />
+			</h:panelGrid>
+			<p:commandButton value="Salvar" update="panel"
+				action="#{alunoBean.save}" />
+		</p:panel>
+	</h:form>
+</h:body>
+</html>

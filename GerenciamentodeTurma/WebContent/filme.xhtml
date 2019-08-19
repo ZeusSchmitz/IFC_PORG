@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+    <title>Gerencia Filme</title>
+  </h:head>
+  <h:body>
+
+
+    <br />
+    <h:form style="width:70%; position:absolute; top:15%; left:15%;">
+
+      <p:dataTable id="tbl" var="aluno" value="#{alunoBean.alunoList}"
+                   paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} 
+                   {Exporters}"
+                   paginator="true" rows="5" style="margin-bottom:20px">
+
+        <p:column headerText="Codigo do filme">
+          <h:outputText value="#{filme.id}" />
+        </p:column>
+
+        <p:column headerText="Name filme">
+          <h:outputText value="#{filme.name}" />
+        </p:column>
+        <p:column headerText="Ano filme">
+          <h:outputText value="#{filme.data}" />
+        </p:column>
+        <p:column headerText="Editar" exportable="false">
+
+          <p:commandButton action="#{filmeBean.edit(filme)}" value="Editar" />
+
+        </p:column>
+        <p:column headerText="Deletar" exportable="false">
+
+          <h:commandLink action="#{filmeBean.delete(filme)}" value="Excluir" />
+        </p:column>
+      </p:dataTable>
+    </h:form>
+
+  </h:body>
+</html>

@@ -1,0 +1,16 @@
+controller\CalendarioBean.class
+controller\AlunoBean.class
+dao\MainApp.class
+entity\Aluno.class
+servlets\Login.class
+dao\CadastroUsuarioDao.class
+entity\Calendario.class
+util\MainApp.class
+entity\CadastroUsuario.class
+util\HibernateUtil.class
+entity\Usuario.class
+controller\CadastroUsuarioBean.class
+controller\UsuarioBean.class
+dao\AlunoDao.class
+dao\UsuarioDao.class
+dao\CaledarioDao.class

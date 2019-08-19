@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+  <h:head>
+    <meta charset="UTF-8"></meta>
+    <title>Login</title>
+
+
+    <link rel='stylesheet prefetch'
+          href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'></link>
+    <script src="http://code.jquery.com/jquery-latest.min.js"
+    type="text/javascript"></script>
+    <link rel="stylesheet" href="css/style.css"></link>
+
+
+  </h:head>
+
+  <h:body>
+
+    <div class="wrapper">
+      <h:form styleClass="form-signin">
+        <p:growl id="growl" showDetail="true" sticky="true" />     
+        <h2 styleClass="form-signin-heading">Login</h2>
+        <h:panelGrid>
+          <p:outputLabel for="nomeUsuario" value="Usuário:" />
+          <p:inputText styleClass="form-control" id="nomeUsuario"
+                       value="#{cadastroUsuarioBean.cadastroUsuario.usuario}" />
+
+          <p:outputLabel for="senha" value="Senha:" />
+          <p:password styleClass="form-control" id="senha"
+                      value="#{cadastroUsuarioBean.cadastroUsuario.senha}" />
+
+          <label class="checkbox"> <input type="checkbox"
+                                          value="remember-me" id="rememberMe" name="rememberMe"></input>
+            Lembrar senha
+          </label>
+         
+        </h:panelGrid>
+          <p:commandButton styleClass="btn btn-lg btn-primary btn-block"
+                           value="Entrar" action="#{cadastroUsuarioBean.envia}" ajax="true" update="@form">
+          </p:commandButton>
+      </h:form>
+    </div>
+
+
+
+  </h:body>
+
+</html>
